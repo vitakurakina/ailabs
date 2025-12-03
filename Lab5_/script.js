@@ -12,9 +12,8 @@ document.getElementById('send-btn').onclick = async function () {
             Уточняй, какие ингредиенты есть у пользователя, и подбирай рецепты исходя из них.  
             Даёшь варианты на завтрак, обед или ужин, можешь давать быстрые и простые рецепты, а также более сложные для праздника.  
             Старайся давать советы по шагам и делиться маленькими кулинарными хитростями.  
-            Если пользователь спрашивает «что приготовить?», предложи минимум 3 разных варианта с кратким описанием и временем приготовления.
-
-`
+            Если пользователь спрашивает «что приготовить?», предложи минимум 3 разных варианта с кратким описанием и временем 
+            приготовления.`
       },
       {
         "role": "user",
@@ -22,10 +21,9 @@ document.getElementById('send-btn').onclick = async function () {
       },
     ],
     'max_tokens': '50',
-    "temperature": "0.5" // Температура для генерации текста
+    "temperature": "0.5"
   }
 
-  // Пример интеграции с ollama AI
   try {
     const response = await fetch('http://localhost:11434/api/chat', {
       method: 'POST',
@@ -35,7 +33,6 @@ document.getElementById('send-btn').onclick = async function () {
       body: JSON.stringify(request)
     });
     
-    // Чтение ответа в виде потока
     const reader = response.body.getReader();
     let result = '';
     document.getElementById('response').innerText ='';
@@ -60,7 +57,6 @@ document.getElementById('send-btn').onclick = async function () {
   }
 };
 
-// Обработка нажатия клавиши Enter для ввода в textarea
 document.getElementById('user-input').addEventListener('keydown', function(event) {
   if (event.key === 'Enter' && !event.shiftKey) {
     event.preventDefault();
